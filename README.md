@@ -1,1 +1,1 @@
-react-whithou-cra
+# Simple React PWA Teamplete with Typescript 
