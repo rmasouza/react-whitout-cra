@@ -1,13 +1,21 @@
+'use strict';
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+
+
+const sourcePath = path.join(__dirname, './src');
+const outputhPath = path.resolve(__dirname, './dist');
 
 const webpackConfig = {
+    context: sourcePath,
     entry: {
-        app:'./src/index.tsx'
+        app:'./index.tsx'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: outputhPath,
         filename: "bundle.js"
     },
     resolve: {
@@ -22,9 +30,23 @@ const webpackConfig = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-            template: "src/assets/index.html"
-        })
-    ]
+            template: "assets/index.html"
+        }),
+        new WorkboxWebpackPlugin.GenerateSW({
+            clientsClaim: true,
+            importWorkboxFrom: 'cdn',
+        }),
+    ],
+    node: {
+        module: 'empty',
+        dgram: 'empty',
+        dns: 'mock',
+        fs: 'empty',
+        http2: 'empty',
+        net: 'empty',
+        tls: 'empty',
+        child_process: 'empty',
+    },
 };
 
 module.exports=webpackConfig;
