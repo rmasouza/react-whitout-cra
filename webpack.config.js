@@ -30,7 +30,8 @@ const webpackConfig = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-            template: "assets/index.html"
+            template: "assets/index.html",
+            favicon: 'assets/icon.ico'
         }),
         new WorkboxWebpackPlugin.GenerateSW({
             clientsClaim: true,
