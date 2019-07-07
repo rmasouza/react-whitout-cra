@@ -49,10 +49,10 @@
     // "typeRoots": [],
     // "types": [],
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
     // "preserveSymlinks": true,
     // "allowUmdGlobalAccess": true,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
     /* Source Map Options */
     // "sourceRoot": "",
     // "mapRoot": "",
