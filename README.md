@@ -1,1 +1,1 @@
-# Simple React PWA Teamplete with Typescript 
+# Simple React PWA Template with Typescript 
