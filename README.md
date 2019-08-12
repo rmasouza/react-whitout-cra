@@ -1,1 +1,1 @@
-### Simple React PWA Template with Typescript (without create eact app)
+### Simple React PWA Template with Typescript (without create react app)
