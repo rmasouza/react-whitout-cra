@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./App";
-import {register} from "./ServiceWorker";
+import { register } from "./ServiceWorker";
 
 ReactDOM.render(
     <App/>,

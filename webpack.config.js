@@ -137,6 +137,7 @@ const webpackConfig = {
     },
     devServer: {
         compress: true,
+        port: process.env.PORT,
         before(app) {
             app.use(compression({}));
         },
