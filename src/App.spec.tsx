@@ -1,10 +1,10 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import App from './App';
 
-describe('CommonSignUpInput', () => {
-    it('renders the checkbox with correct label', () => {
+describe('<App />', () => {
+    it('should render correctly with "Hello World!"', () => {
         const wrapper = shallow(<App />);
-        expect(wrapper.find('#username').children().length == 1);
+        expect(wrapper.text()).toBe('Hello World!')
     });
 });
