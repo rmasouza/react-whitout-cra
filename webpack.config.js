@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const Dotenv = require('dotenv-webpack');
@@ -34,14 +34,16 @@ const webpackConfig = {
     },
     module: {
         rules: [
-            { test: /\.(ts|js)x?$/, exclude: /node_modules/,  use: 'babel-loader' },
+            { test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/ },
             { test: /\.css$/, use: [ 'bstyle-loader', 'css-loader' ] },
         ]
     },
     mode: process.env.NODE_ENV,
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
+            new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
             }),
         ],

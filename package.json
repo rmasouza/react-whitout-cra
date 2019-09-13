@@ -7,25 +7,20 @@
   "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack"
+    "build": "webpack",
+    "test:unit": "jest --config ./test/jest.unity.js"
   },
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
     "@types/classnames": "^2.2.8",
-    "@types/jest": "24.0.13",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.1",
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",
-    "babel-loader": "^8.0.6",
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
@@ -46,8 +41,9 @@
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^2.0.1",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.5.2",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.35.0",
     "webpack-bundle-analyzer": "^3.4.1",
