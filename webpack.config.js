@@ -9,6 +9,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const WorkerPlugin = require('worker-plugin');
 const Dotenv = require('dotenv-webpack');
 
 const sourcePath = path.join(__dirname, './src');
@@ -112,6 +113,7 @@ const webpackConfig = {
             path: path.join(__dirname, './.env'),
             systemvars: true,
         }),
+        new WorkerPlugin(),
     ],
     node: {
         module: 'empty',
