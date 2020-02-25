@@ -1,6 +1,5 @@
 'use strict';
 const path = require('path');
-const webpack = require('webpack');
 const compression = require('compression');
 const dotenv = require('dotenv');
 
@@ -17,7 +16,6 @@ const sourcePath = path.join(__dirname, './src');
 const outputhPath = path.resolve(__dirname, './dist');
 
 dotenv.config();
-console.log(process.env.NODE_ENV);
 
 const webpackConfig = {
     context: sourcePath,
@@ -57,16 +55,6 @@ const webpackConfig = {
                     test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
                     name: "react~vendors"
                 },
-                //     vendor: {
-                //         test: /[\\/]node_modules[\\/]/,
-                //         name(module) {
-                //             // get the name. E.g. node_modules/packageName/not/this/part.js
-                //             // or node_modules/packageName
-                //             const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-                //             // npm package names are URL-safe, but some servers don't like @ symbols
-                //             return `npm.${packageName.replace('@', '')}`;
-                //         },
-                //     },
             }
         },
     },
@@ -79,7 +67,6 @@ const webpackConfig = {
         new InlineSourcePlugin(),
         new WorkboxWebpackPlugin.GenerateSW({
             clientsClaim: true,
-            importWorkboxFrom: 'cdn',
             runtimeCaching: [
                 {
                     urlPattern: /^https?.*/,
@@ -115,8 +102,6 @@ const webpackConfig = {
                 }
             ],
             ios: {
-                // 'apple-touch-icon': string | IosAppleTouchIcon,
-                // 'apple-touch-startup-image': string,
                 'apple-mobile-web-app-title': 'MyPWA',
                 'apple-mobile-web-app-capable': true,
                 'apple-mobile-web-app-status-bar-style':  'black'
