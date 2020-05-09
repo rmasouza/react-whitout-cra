@@ -3,8 +3,13 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 describe('<App />', () => {
-    it('should render correctly with "Hello World!"', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper.text()).toBe('Hello World!');
+    let wrapper: any;
+
+    beforeEach(() => {
+        wrapper = shallow(<App />);
+    });
+
+    it('should render correctly', () => {
+        expect(wrapper.isEmptyRender()).toBe(false);
     });
 });
