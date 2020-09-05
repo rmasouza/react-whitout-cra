@@ -24,25 +24,26 @@ module.exports = {
         '@typescript-eslint',
     ],
     rules: {
-        "indent": ["error", 4, {"ignoredNodes": ["JSXElement"]}],
+        "indent": ["error", 4, { "ignoredNodes": ["JSXElement"] }],
         "react/jsx-indent": ["error", 4],
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "import/extensions": [
             "error",
             "ignorePackages",
             {
-              "js": "never",
-              "jsx": "never",
-              "ts": "never",
-              "tsx": "never"
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
             }
-         ]
+        ],
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.spec.tsx", "**/*.spec.ts"] }]
     },
     settings: {
         "import/resolver": {
-          "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-          }
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
         }
-      },
+    },
 };
