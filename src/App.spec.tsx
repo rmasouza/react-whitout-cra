@@ -1,15 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import App from './App';
 
 describe('<App />', () => {
-    let wrapper: any;
 
-    beforeEach(() => {
-        wrapper = shallow(<App />);
-    });
-
-    it('should render correctly', () => {
-        expect(wrapper.isEmptyRender()).toBe(false);
+    test('renders App component', () => {
+        render(<App />);
     });
 });

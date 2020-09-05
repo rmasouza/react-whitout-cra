@@ -6,7 +6,16 @@ module.exports = {
         '^src(.*)$': '<rootDir>/src$1',
         '^test(.*)$': '<rootDir>/test$1',
     },
-    preset: 'ts-jest',
+    transform: {
+        '\\.tsx?$': 'ts-jest',
+        '\\.jsx?$': 'babel-jest',
+    },
+    globals: {
+        'ts-jest': {
+            tsConfig: '<rootDir>/tsconfig.json',
+        },
+    },
+    // preset: 'ts-jest',
     testRegex: '.spec.(tsx?|ts?)$',
     testPathIgnorePatterns: ['../node_modules/'],
 };
