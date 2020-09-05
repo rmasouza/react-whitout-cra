@@ -3,7 +3,6 @@ const compression = require('compression');
 const dotenv = require('dotenv');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -19,6 +18,8 @@ dotenv.config();
 
 const webpackConfig = {
     context: sourcePath,
+    mode: process.env.NODE_ENV,
+    devtool: 'source-map',
     entry: {
         main: './index.tsx',
     },
@@ -37,10 +38,12 @@ const webpackConfig = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
-            { test: /\.css$/, use: ['bstyle-loader', 'css-loader'] },
+            {
+                test: /\.css$/,
+                use: ['bstyle-loader', 'css-loader'],
+            },
         ],
     },
-    mode: process.env.NODE_ENV,
     optimization: {
         minimizer: [
             new TerserPlugin({
@@ -66,7 +69,7 @@ const webpackConfig = {
             favicon: 'assets/icon.ico',
             inlineSource: 'runtime~.+\\.js',
         }),
-        new InlineSourcePlugin(),
+        // new InlineSourcePlugin(),
         new WorkboxWebpackPlugin.GenerateSW({
             clientsClaim: true,
             runtimeCaching: [
