@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    margin: auto;
+    padding: 16px;
+    border: solid 1px rebeccapurple;
+    border-radius: 16px;
+}

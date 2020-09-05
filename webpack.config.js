@@ -19,7 +19,7 @@ dotenv.config();
 const webpackConfig = {
     context: sourcePath,
     mode: process.env.NODE_ENV,
-    devtool: 'source-map',
+    // devtool: 'source-map',
     entry: {
         main: './index.tsx',
     },
@@ -39,8 +39,12 @@ const webpackConfig = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.css$/,
-                use: ['bstyle-loader', 'css-loader'],
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
             },
         ],
     },
