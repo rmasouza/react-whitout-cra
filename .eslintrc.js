@@ -37,7 +37,9 @@ module.exports = {
                 "tsx": "never"
             }
         ],
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.spec.tsx", "**/*.spec.ts"] }]
+        "import/no-extraneous-dependencies": ["error", { 
+            "devDependencies": ["**/*.spec.tsx", "**/*.spec.ts", "**/*.config.js"] 
+        }]
     },
     settings: {
         "import/resolver": {
