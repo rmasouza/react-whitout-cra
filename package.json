@@ -8,7 +8,7 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
-    "test:unit": "jest --updateSnapshot --config ./test/jest.unity.js"
+    "test:unit": "jest --updateSnapshot --config ./test/jest.config.js"
   },
   "dependencies": {
     "react": "^16.13.1",
