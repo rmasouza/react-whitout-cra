@@ -1,8 +1,8 @@
 import React from 'react';
 import useIsOnline from './hooks/network/useIsOnline';
+import useGradientBorderEffect from './hooks/stylesEffect/useGradientBorderEffect';
 
 import './App.scss';
-import useGradientBorderEffect from './hooks/stylesEffect/useGradientBorderEffect';
 
 const App: React.FC = () => {
     const isOnline = useIsOnline();
@@ -10,10 +10,10 @@ const App: React.FC = () => {
 
     return (
         <article
-          className="app__container"
-          ref={elementRef}
-          onMouseMove={onMouseMove}
-          style={{ background }}
+            className="app__container"
+            ref={elementRef}
+            onMouseMove={onMouseMove}
+            style={{ background }}
         >
             <section className="app">
                 <header>Hello World!</header>
