@@ -6,6 +6,12 @@ name: Build successfully
 on:
   push:
     branches: [ main ]
+    paths:
+      - '**.js'
+      - '**.ts'
+      - '**.tsx'
+      - 'package.json'
+      - 'tsconfig.json'
   pull_request:
     branches: [ main ]
 

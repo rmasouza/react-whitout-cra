@@ -6,6 +6,12 @@ name: Passed all tests
 on:
   push:
     branches: [ main ]
+    paths:
+      - '**.js'
+      - '**.ts'
+      - '**.tsx'
+      - 'package.json'
+      - '!webpack.config.js'
   pull_request:
     branches: [ main ]
   workflow_dispatch:
