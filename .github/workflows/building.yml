@@ -10,6 +10,7 @@ on:
       - '**.js'
       - '**.ts'
       - '**.tsx'
+      - '!**.spec.tsx'
       - 'package.json'
       - 'tsconfig.json'
   pull_request:
