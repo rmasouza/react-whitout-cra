@@ -11,4 +11,5 @@ module.exports = {
     },
     testRegex: '.spec.(tsx?|ts?)$',
     testPathIgnorePatterns: ['../node_modules/'],
+    coverageReporters: ["json", "html"],
 };
