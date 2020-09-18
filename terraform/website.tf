@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 locals {
-  s3_origin_id = "reactdex-prod"
+  s3_origin_id = "app-prod"
   environment  = "production"
   domain = {
     root = "example.com"
@@ -28,6 +28,13 @@ resource "aws_s3_bucket" "bucket" {
   force_destroy = true
   tags = {
     Environment = local.environment
+  }
+
+  cors_rule {
+    allowed_headers = ["Authorization", "Content-Length"]
+    allowed_methods = ["GET"]
+    allowed_origins = ["*"]
+    max_age_seconds = 3000
   }
 
   website {
@@ -101,10 +108,11 @@ resource "aws_cloudfront_distribution" "distribution" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+    compress               = true
   }
 
   viewer_certificate {
