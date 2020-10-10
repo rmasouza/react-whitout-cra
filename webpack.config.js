@@ -1,34 +1,32 @@
-const path = require('path');
-const compression = require('compression');
-const dotenv = require('dotenv');
+const path = require("path");
+const compression = require("compression");
+const dotenv = require("dotenv");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const TerserPlugin = require('terser-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const WorkerPlugin = require('worker-plugin');
-const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
+const TerserPlugin = require("terser-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const WorkerPlugin = require("worker-plugin");
+const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const sourcePath = path.join(__dirname, './src');
-const outputhPath = path.resolve(__dirname, './dist');
+const sourcePath = path.join(__dirname, "./src");
+const outputhPath = path.resolve(__dirname, "./dist");
 
 dotenv.config();
 
 const webpackConfig = {
-    context: sourcePath,
+    target: ['web', 'es2018'],
     mode: process.env.NODE_ENV,
-    devtool: "source-map",
-    entry: {
-        main: "./index.tsx",
-    },
-    output: {
-        path: outputhPath,
-        filename: "[name].[chunkhash].js",
-        chunkFilename: "[name]-[chunkhash].js",
-    },
+    // devtool: "source-map",
+    // entry: "./index.tsx",
+    // output: {
+    //     path: outputhPath,
+    //     filename: "[name].[contenthash].js",
+    //     chunkFilename: "[name]-[contenthash].js",
+    // },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
     },
@@ -63,27 +61,27 @@ const webpackConfig = {
                 test: /\.js(\?.*)?$/i,
             }),
         ],
-        runtimeChunk: true,
+        // runtimeChunk: true,
         splitChunks: {
             chunks: "all",
-            maxInitialRequests: Infinity,
-            minSize: 0,
-            cacheGroups: {
-                reactVendors: {
-                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                    name: "react~vendors",
-                },
-            },
+            //     maxInitialRequests: Infinity,
+            //     minSize: 0,
+            //     cacheGroups: {
+            //         reactVendors: {
+            //             test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            //             idHint: "react~vendors",
+            //         },
+            //     },
         },
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "assets/index.html",
-            favicon: "assets/icon.ico",
+            template: path.resolve(sourcePath,"assets/index.html"),
+            favicon: path.resolve(sourcePath,"assets/icon.ico"),
             inlineSource: "runtime~.+\\.js",
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].[chunkhash].css",
+            filename: "[name].[contenthash].css",
             chunkFilename: "[id].css",
         }),
         new WorkboxWebpackPlugin.GenerateSW({
@@ -117,7 +115,7 @@ const webpackConfig = {
             orientation: "portrait",
             icons: [
                 {
-                    src: path.resolve("src/assets/icon.png"),
+                    src: path.resolve(sourcePath, "assets/icon.png"),
                     sizes: [192, 256, 512],
                     ios: true,
                 },
@@ -134,16 +132,6 @@ const webpackConfig = {
         }),
         new WorkerPlugin(),
     ],
-    node: {
-        module: "empty",
-        dgram: "empty",
-        dns: "mock",
-        fs: "empty",
-        http2: "empty",
-        net: "empty",
-        tls: "empty",
-        child_process: "empty",
-    },
     devServer: {
         compress: true,
         port: process.env.PORT,
